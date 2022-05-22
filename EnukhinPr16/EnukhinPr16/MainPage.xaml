@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EnukhinPr16.MainPage" Title="Список друзей">
+
+    <StackLayout>
+        <Button Text="Добавить" Command="{Binding CreateFriendCommand}" IsEnabled="{Binding IsLoaded}" />
+        <ListView x:Name="friendsList" ItemsSource="{Binding Friends}"
+              SelectedItem="{Binding SelectedFriend, Mode=TwoWay}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <Label Text="{Binding Name}" FontSize="Medium" />
+                                <Label Text="{Binding Email}" FontSize="Small" />
+                                <Label Text="{Binding Phone}" FontSize="Small" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout IsVisible="{Binding IsBusy}"
+                    HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="20">
+            <Label Text="Загрузка данных..." TextColor="Gray" HorizontalOptions="Center" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red" >
+            </ActivityIndicator>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
+

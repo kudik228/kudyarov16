@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EnukhinPr16.FriendPage" Title="Информация о друге">
+    <StackLayout>
+        <StackLayout>
+            <Label Text="Имя" />
+            <Entry Text="{Binding Path=Model.Name}" FontSize="Medium" />
+            <Label Text="Электронная почта" />
+            <Entry Text="{Binding Path=Model.Email}" FontSize="Medium" />
+            <Label Text="Телефон" />
+            <Entry Text="{Binding Path=Model.Phone}" FontSize="Medium" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button Text="Сохранить" Command="{Binding ViewModel.SaveFriendCommand}" CommandParameter="{Binding Model}" />
+            <Button Text="Удалить" Command="{Binding ViewModel.DeleteFriendCommand}" CommandParameter="{Binding Model}" />
+            <Button Text="Назад" Command="{Binding Path=ViewModel.BackCommand}" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
